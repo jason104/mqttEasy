@@ -133,12 +133,12 @@ def main():
     client.connect(BROKER_HOST, BROKER_PORT, keepalive=60)
 
     try:
-        client.loop_forever()   # 阻塞式等待，自動處理重連
+        client.loop_forever()   # block waiting and process reconnect
     except KeyboardInterrupt:
         print(f"\n\nGateway 已停止（Ctrl+C）")
         print(f"共接收 {msg_count} 則訊息")
         for s, cnt in alert_count.items():
-            print(f"  {s}: {cnt} 次告警")
+            print(f"  {s}: {cnt} 次警告")
     finally:
         client.disconnect()
 
